@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Firebase CRUD</title>
+
+    <!-- BOOTSWATCH -->
+    <link
+      rel="stylesheet"
+      href="https://bootswatch.com/5/yeti/bootstrap.min.css"
+    />
+  </head>
+
+  <body class="bg-dark">
+     
+    <!-- INICI navbar -->
+    <nav id="barraNavegacio" class="navbar navbar-expand-lg navbar-dark bg-dark border-bottom">
+      <div class="container">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item logged-out" style="display: none;">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#signinModal">Entrar</a>
+            </li>
+            <li class="nav-item logged-out" style="display: none;">
+              <a class="nav-link" href="#" data-toggle="modal" data-target="#signupModal">Registre</a>
+            </li>
+            <li class="nav-item logged-in" style="display: none;">
+              <a class="nav-link" href="#" id="logout">Sortir</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- FINAL navbar -->
+
+ <!-- INICI Modal Registre -->
+ <div class="modal fade" id="signupModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+ aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h3>Registre</h3>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form id="signup-form">
+         <div class="form-group">
+           <input type="text" id="signup-email" class="form-control" placeholder="Correu elecctrònic" required>
+         </div>
+         <div class="form-group">
+           <input type="password" id="signup-password" class="form-control" placeholder="Contrasenya" required>
+         </div>
+         <button type="submit" class="btn btn-primary">Guarda canvis</button>
+       </form>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- FINAL Modal Registre -->
+
+<!-- INICI Modal Entrar -->
+<div class="modal fade" id="signinModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalSignin"
+ aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <h3>SignIn</h3>
+       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+         <span aria-hidden="true">&times;</span>
+       </button>
+     </div>
+     <div class="modal-body">
+       <form id="login-form">
+         <div class="form-group">
+           <input type="text" id="login-email" class="form-control" placeholder="Title" required>
+         </div>
+         <div class="form-group">
+           <input type="password" id="login-password" class="form-control" placeholder="Password" required>
+         </div>
+         <button type="submit" class="btn btn-secondary btn-block">Entrar</button>
+         <!-- <button type="button" class="btn btn-info btn-block" id="googleLogin">Login with Google</button>
+           <button type="button" class="btn btn-primary btn-block" id="facebookLogin">Login with Facebook</button> -->
+       </form>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- FINAL Modal Entrar -->
+
+    <!-- AFEGIR TASCA -->
+    <div class="container p-4">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="card">
+            <div class="card-body">
+              <h1 class="h4">Afegir tasca</h1>
+
+              <form id="task-form">
+                <label for="title">Titol:</label>
+                <input
+                  type="text"
+                  id="task-title"
+                  class="form-control mb-3"
+                  class="My First Title"
+                  placeholder="Títol de la Tasca"
+                  autofocus
+                />
+
+                <label for="description">Descripció:</label>
+                <textarea
+                  id="task-description"
+                  rows="3"
+                  class="form-control mb-3"
+                  placeholder="Descripció de la Tasca"
+                ></textarea>
+
+                <button class="btn btn-primary" id="btn-task-form">Save</button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <!-- LLISTA DE TASQUES -->
+        <div class="col-md-6" id="tasks-container"></div>
+      </div>
+    </div>
+
+    <!-- CUSTOM CODE -->
+
+ <!-- SDK FIREBASE -->
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-app.js"></script>
+
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-auth.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/7.14.4/firebase-firestore.js"></script>
+  <!-- Don't change the format for any other products. -->
+  <!-- etc. -->
+
+
+    <script src="./firebase.js" type="module"></script>
+  </body>
+</html>
