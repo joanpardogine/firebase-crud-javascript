@@ -90,9 +90,9 @@ let id = "";
 
 const setupPosts = (data) => {
   if (data.length) {
-    querySnapshot.forEach((doc) => {
+    tasksContainer.innerHTML = "";
+    data.forEach((doc) => {
       const task = doc.data();
-
       tasksContainer.innerHTML += `
       <div class="card card-body mt-2 border-primary">
     <h3 class="h5">${task.title}</h3>
@@ -180,7 +180,7 @@ taskForm.addEventListener("submit", async (e) => {
 auth.onAuthStateChanged((user) => {
   if (user) {
     console.log("signin");
-    fs.collection("posts")
+      fs.collection("tasks")
       .get()
       .then((snapshot) => {
         setupPosts(snapshot.docs);
